@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "549285722349",
+    "firebase_url": "https://hire-tutor-nepal-tutee.firebaseio.com",
+    "project_id": "hire-tutor-nepal-tutee",
+    "storage_bucket": "hire-tutor-nepal-tutee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549285722349:android:7e2b926998b2ca50",
+        "android_client_info": {
+          "package_name": "com.example.hiretutornepaltutee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549285722349-l8053d69rjingthshvdh8fk987m8ma9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY-Uqq1VikyvVyq-I0IvfuwvABugllU-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549285722349-l8053d69rjingthshvdh8fk987m8ma9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

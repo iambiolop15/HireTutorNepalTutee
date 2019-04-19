@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/onboarding_bg"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imaglogin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/learn"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        />
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/Emaillayout"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            app:hintEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/WelcomeErrorAppearance"
+            >
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Email"
+                android:backgroundTint="@color/white"
+                android:drawablePadding="10dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                />
+
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/Passlayout"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/white"
+            app:hintEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/WelcomeErrorAppearance"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white"
+
+            >
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Password"
+                android:backgroundTint="@color/white"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/forgotpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/ForgtPass"
+            android:textColor="@color/white"
+            />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="@string/Login"
+            android:background="@color/Button"
+            android:textColor="@color/white"
+            />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/registerbtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="@string/Register"
+            android:background="@color/Button"
+            android:textColor="@color/white"/>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -29,12 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button regbutton,loginbtn;
-    TextInputLayout email_layout,pass_layout;
-    TextInputEditText email,pass;
-    TextView forgot_pass;
+    private Button regbutton,loginbtn;
+    TextView forgotPass;
+    private TextInputLayout email_layout,pass_layout;
     private FirebaseAuth firebaseAuth;
-    ProgressDialog  progressDialog;
+    private ProgressDialog  progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         regbutton=findViewById(R.id.registerbtn);
         loginbtn=findViewById(R.id.loginbtn);
-        forgot_pass=findViewById(R.id.forgotpass);
+        forgotPass=findViewById(R.id.forgotpass);
         email_layout=findViewById(R.id.Emaillayout);
         pass_layout=findViewById(R.id.Passlayout);
         firebaseAuth=FirebaseAuth.getInstance();
@@ -61,12 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        forgot_pass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         regbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ForgotPass.class));
+                finish();
+            }
+        });
+
+
+
     }
     private void validate(String username,String password){
         progressDialog.setMessage("Logging in");
@@ -118,9 +122,6 @@ public class MainActivity extends AppCompatActivity {
             pass_layout.setError("Enter the password");
             return false;
         }
-
-
-
         else {
             pass_layout.setError(null);
             return true;

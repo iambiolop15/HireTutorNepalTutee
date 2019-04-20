@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean validatePass() {
         String pass = pass_layout.getEditText().getText().toString().trim();
         if (pass.isEmpty()) {
-            pass_layout.setError("Set the password");
+            pass_layout.setError("Enter the password");
             return false;
         }
 

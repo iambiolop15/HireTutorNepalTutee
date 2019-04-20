@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    startActivity(new Intent(MainActivity.this,Home.class));
-                    finish();
+                    progressDialog.dismiss();
+                    checkEmailverification();
                 }
                 else{
                     progressDialog.dismiss();
@@ -134,7 +134,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
 
     }
+    private  void checkEmailverification(){
+        FirebaseUser firebaseUser=firebaseAuth.getInstance().getCurrentUser();
+        Boolean emailFlag=firebaseUser.isEmailVerified();
+        if(emailFlag){
+            finish();
+            startActivity(new Intent(MainActivity.this,Home.class));
 
+        }
+        else{
+            Toast.makeText(this, "Verify Email First", Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
+    }
 
 
 

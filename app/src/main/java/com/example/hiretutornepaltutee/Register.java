@@ -116,11 +116,7 @@ public class Register extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressDialog.dismiss();
-                    Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    Toast.makeText(Register.this, "User Registered", Toast.LENGTH_SHORT).show();
-                    firebaseAuth.signOut();
+                    sendEmailVerification();
 
                 }
                 else
@@ -227,6 +223,25 @@ public class Register extends AppCompatActivity {
         }
         return true;
 
+    }
+    private void sendEmailVerification(){
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+        if(firebaseUser!=null){
+            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(Register.this, "User Registered, please verify your email", Toast.LENGTH_SHORT).show();
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(Register.this,MainActivity.class));
+                    }
+                    else{
+                        Toast.makeText(Register.this, "Verification email not sent", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
 

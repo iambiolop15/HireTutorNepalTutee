@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,6 +25,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +34,14 @@ import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
     private AppCompatSpinner appCompatSpinner;
-    private Button regbutton,Backbutton;
-    private TextInputEditText name, email, age, phone, password, cpassword;
+    private Button regbutton,backbutton;
+    private TextInputEditText uName, uEmail, uAge, uPhone, uPassword, uCpassword;
     private TextInputLayout namelayout, emaillyout, agelayout, phonelayout, passlayout, cPasslayout;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private ImageView profilePic;
+    String name,email,phone,age,gender,cPass,pass;
+
 
 
     @Override
@@ -46,12 +52,13 @@ public class Register extends AppCompatActivity {
         progressDialog=new ProgressDialog(this);
         appCompatSpinner = findViewById(R.id.spinner);
         regbutton = findViewById(R.id.Regbtn);
-        Backbutton=findViewById(R.id.Backbtn);
+        backbutton=findViewById(R.id.Backbtn);
         emaillyout = findViewById(R.id.Emaillayout);
         namelayout = findViewById(R.id.Namelayout);
         agelayout = findViewById(R.id.Agelayout);
         phonelayout = findViewById(R.id.Phonelayout);
         passlayout = findViewById(R.id.Passlayout);
+        profilePic=(ImageView) findViewById(R.id.profilepic);
         cPasslayout = findViewById(R.id.CPasslayout);
         List<String> categories = new ArrayList<>();
         categories.add(0, "Gender");
@@ -69,7 +76,7 @@ public class Register extends AppCompatActivity {
                 if (parent.getItemAtPosition(position).equals("Gender")) {
 
                 } else {
-                    String item = parent.getItemAtPosition(position).toString();
+                     gender= parent.getItemAtPosition(position).toString();
                 }
             }
 
@@ -93,7 +100,7 @@ public class Register extends AppCompatActivity {
 
             }
         });
-        Backbutton.setOnClickListener(new View.OnClickListener() {
+        backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),MainActivity.class);
@@ -130,8 +137,8 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validateName() {
-        String Name = namelayout.getEditText().getText().toString().trim();
-        if (Name.isEmpty()) {
+         name = namelayout.getEditText().getText().toString().trim();
+        if (name.isEmpty()) {
             namelayout.setError("Enter your name");
             return false;
         } else {
@@ -142,11 +149,11 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validateEmail() {
-        String Email = emaillyout.getEditText().getText().toString().trim();
-        if (Email.isEmpty()) {
+         email= emaillyout.getEditText().getText().toString().trim();
+        if (email.isEmpty()) {
             emaillyout.setError("Enter the email address");
             return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emaillyout.setError("Please enter a valid email address");
             return false;
 
@@ -158,8 +165,8 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validatePhone() {
-        String Phone = phonelayout.getEditText().getText().toString().trim();
-        if (Phone.isEmpty()) {
+         phone = phonelayout.getEditText().getText().toString().trim();
+        if (phone.isEmpty()) {
             phonelayout.setError("Enter your phone number");
             return false;
         } else {
@@ -170,8 +177,8 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validateAge() {
-        String Age = agelayout.getEditText().getText().toString().trim();
-        if (Age.isEmpty()) {
+        age = agelayout.getEditText().getText().toString().trim();
+        if (age.isEmpty()) {
             agelayout.setError("Enter your age");
             return false;
         } else {
@@ -182,7 +189,7 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validatePass() {
-        String pass = passlayout.getEditText().getText().toString().trim();
+       pass = passlayout.getEditText().getText().toString().trim();
         Log.i("variable",pass);
         if (pass.isEmpty()) {
             passlayout.setError("Set the password");
@@ -199,8 +206,8 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validateCPass() {
-        String CPass = cPasslayout.getEditText().getText().toString().trim();
-        if (CPass.isEmpty()) {
+         cPass = cPasslayout.getEditText().getText().toString().trim();
+        if (cPass.isEmpty()) {
             cPasslayout.setError("Re type password");
             return false;
         }
@@ -231,6 +238,7 @@ public class Register extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
+                        sendUserdata();
                         Toast.makeText(Register.this, "User Registered, please verify your email", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
                         finish();
@@ -242,6 +250,13 @@ public class Register extends AppCompatActivity {
                 }
             });
         }
+    }
+    private void sendUserdata(){
+        gender=appCompatSpinner.getSelectedItem().toString();
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=firebaseDatabase.getReference(firebaseAuth.getUid());
+        UserProfile userProfile=new UserProfile(name,email,age,phone,gender);
+        myRef.setValue(userProfile);
     }
 
 

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+         try{
         regbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });}
+        catch(Exception ex){
+             Log.i("Error",ex.getMessage());
+
+        }
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),ForgotPass.class));
-                finish();
             }
         });
 

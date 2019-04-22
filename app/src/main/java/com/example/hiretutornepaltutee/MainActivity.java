@@ -36,22 +36,25 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog  progressDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebaseAuth= FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+        //if(firebaseUser!=null){
+            //finish();
+            //startActivity(new Intent(getApplicationContext(),Home.class));
+        //}
         setContentView(R.layout.activity_main);
         regbutton=findViewById(R.id.registerbtn);
         loginbtn=findViewById(R.id.loginbtn);
         forgotPass=findViewById(R.id.forgotpass);
         email_layout=findViewById(R.id.Emaillayout);
+
         pass_layout=findViewById(R.id.Passlayout);
         firebaseAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
-        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
-        if(firebaseUser!=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(),Home.class));
-        }
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

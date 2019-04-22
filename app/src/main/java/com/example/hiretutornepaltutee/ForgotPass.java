@@ -40,12 +40,14 @@ public class ForgotPass extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+                                progressDialog.dismiss();
                                 Toast.makeText(ForgotPass.this, "Password reset email sent", Toast.LENGTH_LONG).show();
                                 finish();
                                 startActivity(new Intent(ForgotPass.this,MainActivity.class));
 
                             }
                             else{
+                                progressDialog.dismiss();
                                 Toast.makeText(ForgotPass.this, "enter a valid email", Toast.LENGTH_SHORT).show();
                             }
                         }

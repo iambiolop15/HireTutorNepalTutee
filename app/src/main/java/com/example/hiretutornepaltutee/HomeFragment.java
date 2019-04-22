@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        makeText(this,slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+
     }
 
     private PopupMenu makeText(HomeFragment homeFragment, String extra, int lengthShort) {

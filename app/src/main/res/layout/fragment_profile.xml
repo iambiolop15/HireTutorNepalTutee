@@ -5,20 +5,294 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/logoutbtn"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:textSize="16sp"
-        android:text="@string/logout"
-        android:background="@color/Button"
-        android:textColor="@color/white"
-        android:layout_marginTop="100dp"
-        android:textAllCaps="false"
-        />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/Mainlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/onboarding_bg">
+
+                <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/photo" />
+
+                <TextView
+                    android:id="@+id/Username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilePic"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="Biplop Dangol"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Profilelayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#EBE7E7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="PROFILE"
+                    android:textColor="#333"
+                    android:textSize="20sp"
+
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/editprofileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/profileIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_editprofile" />
+
+                <TextView
+                    android:id="@+id/editprofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/profileIcon"
+                    android:text="Edit Profile"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/CoursesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+                <ImageView
+                    android:id="@+id/MycoursesIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_books" />
+
+                <TextView
+                    android:id="@+id/MyCourses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/MycoursesIcon"
+                    android:text="My Courses"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/FAQLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/FaqsIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_faqs" />
+
+                <TextView
+                    android:id="@+id/faqs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/FaqsIcon"
+                    android:text="FAQ'S"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/AboutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/AboutIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_team" />
+
+                <TextView
+                    android:id="@+id/About"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/AboutIcon"
+                    android:text="About"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/PrivacyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+                <ImageView
+                    android:id="@+id/PrivacyIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_privacy" />
+
+                <TextView
+                    android:id="@+id/Privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/PrivacyIcon"
+                    android:text="Privacy and Policy"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/SendFeedbackLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/SendFeedbackIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_feedback" />
+
+                <TextView
+                    android:id="@+id/SendFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/SendFeedbackIcon"
+                    android:text="Send feedback"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F1F3F4" />
+
+            <RelativeLayout
+                android:id="@+id/LogoutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/LogoutIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_exit" />
+
+                <TextView
+                    android:id="@+id/Logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/LogoutIcon"
+                    android:text="Logout"
+                    android:textColor="#333"
+                    android:textSize="16sp"
+
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </FrameLayout>

@@ -2,7 +2,6 @@ package com.example.hiretutornepaltutee;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,8 +11,13 @@ import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupMenu;
-import android.widget.Toast;
+import android.widget.TextView;
+
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -24,8 +28,16 @@ import java.util.HashMap;
 
 
 public class HomeFragment extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
-    private SliderLayout mDemoSlider;
 
+    private SliderLayout mDemoSlider;
+    ListView listView;
+    String category_list[]={"Academics Tutor","Competitive Exam Tutor","Music Teacher","Dance Teacher","Sports Coach"};
+    String categoryDescription[]={"Tutor for all academic subjects. All classes.",
+                                  "Tutor for all Competitive exam like IOE,MOE etc.",
+                                  "Guitar,Flute,Vocals etc.",
+                                  "Hiphop,Contemporary,Wedding Choreograpghy,Salsa etc.",
+                                  "Football,Cricket,Tennis,Badminton,Futsal etc."};
+    int images[]={R.drawable.academics,R.drawable.competitive,R.drawable.music,R.drawable.dance,R.drawable.football};
 
 
     @Override
@@ -36,16 +48,41 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,null);
         mDemoSlider = view.findViewById(R.id.slider);
-        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Iron man",R.drawable.ironman);
-        file_maps.put("thanos",R.drawable.thanos);
-        file_maps.put("thor",R.drawable.thor);
-        file_maps.put("Dr Strange", R.drawable.drstrange);
-        file_maps.put("Captain America", R.drawable.captainamerica);
+        listView=view.findViewById(R.id.CategorylistView);
+        Myadapter myadapter=new Myadapter(getContext(),category_list,categoryDescription,images);
+        listView.setAdapter(myadapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                if(position==0){
+
+                }
+                if(position==1){
+
+                }
+                if(position==2){
+
+                }
+                if(position==3){
+
+                }
+                if(position==4){
+
+                }
+
+            }
+        });
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Welcome",R.drawable.firstslide);
+        file_maps.put("Academics and Competitive exams",R.drawable.secondslide);
+        file_maps.put("Sports",R.drawable.thirdslide);
+        file_maps.put("Dance",R.drawable.fourthslide);
+        file_maps.put("Music",R.drawable.fifthslide);
 
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(getContext());
@@ -103,4 +140,34 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     public void onPageScrollStateChanged(int state) {
 
     }
+    class Myadapter extends ArrayAdapter<String>{
+        Context context;
+        String rTitle[];
+        String rDescription[];
+        int rImagees[];
+        Myadapter (Context c,String title[],String description[],int imgs[]){
+            super(c,R.layout.row,R.id.CategoryTitle,title);
+            this.context=c;
+            this.rTitle=title;
+            this.rDescription=description;
+            this.rImagees=imgs;
+
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater=(LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row=layoutInflater.inflate(R.layout.row,parent,false);
+            ImageView images=row.findViewById(R.id.CategoryImage);
+            TextView title=row.findViewById(R.id.CategoryTitle);
+            TextView description=row.findViewById(R.id.CategoryDescription);
+            images.setImageResource(rImagees[position]);
+            title.setText(rTitle[position]);
+            description.setText(rDescription[position]);
+
+            return row;
+        }
+    }
 }
+

@@ -3,6 +3,8 @@
     package="com.example.hiretutornepaltutee">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:name=".MyApp"
@@ -12,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".EditProfile"
+            android:theme="@style/EditProfileTheme"></activity>
         <activity android:name=".Privacy" />
         <activity
             android:name=".ForgotPass"

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "549285722349-c36t7cegeksqc19e0scop8bf0hj0c3uk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hiretutornepaltutee",
+            "certificate_hash": "d7768bbe617cd97577d10b39d36e29ccbd56d173"
+          }
+        },
+        {
           "client_id": "549285722349-l8053d69rjingthshvdh8fk987m8ma9h.apps.googleusercontent.com",
           "client_type": 3
         }

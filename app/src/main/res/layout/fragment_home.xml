@@ -5,22 +5,51 @@
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-    <com.daimajia.slider.library.SliderLayout
+        <com.daimajia.slider.library.SliderLayout
 
-        android:id="@+id/slider"
-        android:layout_width="match_parent"
-        custom:pager_animation="Accordion"
-        custom:auto_cycle="true"
-        custom:indicator_visibility="visible"
-        custom:pager_animation_span="1100"
-        android:layout_height="200dp"/>
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            custom:auto_cycle="true"
+            custom:indicator_visibility="visible"
+            custom:pager_animation="Accordion"
+            custom:pager_animation_span="1100" />
 
+        <RelativeLayout
+            android:id="@+id/CategoryTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#EBE7E7">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="You are looking for"
+                android:textColor="#333"
+                android:textSize="20sp"
+
+                />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/CategorylistView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
     </LinearLayout>
+    </ScrollView>
 </FrameLayout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Academics Tutor"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select your Study Level"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        />
+    <RadioGroup
+        android:id="@+id/studylevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RadioButton
+        android:id="@+id/School"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="School"
+        android:layoutDirection="rtl"
+        android:textSize="16sp"
+        android:buttonTint="@android:color/black"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <RadioButton
+        android:id="@+id/Plustwo"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="College(+2)"
+        android:layoutDirection="rtl"
+        android:textSize="16sp"
+        android:buttonTint="@android:color/black"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <RadioButton
+        android:id="@+id/Bachelor"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bachelor"
+        android:layoutDirection="rtl"
+        android:textSize="16sp"
+        android:buttonTint="@android:color/black"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    <RadioButton
+        android:id="@+id/Master"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masters"
+        android:layoutDirection="rtl"
+        android:textSize="16sp"
+        android:buttonTint="@android:color/black"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+    </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="50dp"
+        >
+    <Button
+
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/SubmitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/Button"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        />
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</FrameLayout>

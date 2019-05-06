@@ -3,8 +3,8 @@
     package="com.example.hiretutornepaltutee">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApp"
@@ -14,13 +14,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"
-            android:theme="@style/EditProfileTheme"></activity>
+        <activity android:name=".Dance"
+
+            android:theme="@style/NoActionbar"></activity>
+        <activity android:name=".Music"
+            android:theme="@style/NoActionbar"/>
+        <activity android:name=".Sports"
+            android:theme="@style/NoActionbar"/>
+        <activity android:name=".CompetitiveExam"
+            android:theme="@style/NoActionbar"
+            />
+        <activity
+            android:name=".Academics"
+            android:theme="@style/NoActionbar" />
+        <activity
+            android:name=".EditProfile"
+            android:theme="@style/EditProfileTheme" />
         <activity android:name=".Privacy" />
         <activity
             android:name=".ForgotPass"
             android:theme="@style/OnboardingTheme" />
-        <activity android:name=".Home" />
+        <activity
+            android:name=".Home"
+            android:theme="@style/NoActionbar" />
         <activity
             android:name=".Register"
             android:theme="@style/OnboardingTheme" />

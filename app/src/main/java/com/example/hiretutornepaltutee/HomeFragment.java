@@ -2,6 +2,7 @@ package com.example.hiretutornepaltutee;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -60,18 +61,23 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(position==0){
+                    startActivity(new Intent(getActivity(),Academics.class));
 
                 }
                 if(position==1){
+                    startActivity(new Intent(getActivity(),CompetitiveExam.class));
 
                 }
                 if(position==2){
+                    startActivity(new Intent(getActivity(),Music.class));
 
                 }
                 if(position==3){
+                    startActivity(new Intent(getActivity(),Dance.class));
 
                 }
                 if(position==4){
+                    startActivity(new Intent(getActivity(),Sports.class));
 
                 }
 
@@ -165,7 +171,6 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
             images.setImageResource(rImagees[position]);
             title.setText(rTitle[position]);
             description.setText(rDescription[position]);
-
             return row;
         }
     }

@@ -54,8 +54,6 @@ public class Register extends AppCompatActivity {
     private static  int PICK_IMAGE=123;
     Uri imagepath;
     private  StorageReference storageReference;
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==PICK_IMAGE && resultCode==RESULT_OK && data.getData()!=null) {
@@ -318,15 +316,10 @@ public class Register extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
             }
         });
-
         DatabaseReference myRef=firebaseDatabase.getReference(firebaseAuth.getUid());
         UserProfile userProfile=new UserProfile(name,email,age,phone,gender);
         myRef.setValue(userProfile);
     }
-
-
-
 }

@@ -34,7 +34,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
-public class EditProfile extends AppCompatActivity {
+public class           EditProfile extends AppCompatActivity {
 
     private AppCompatEditText editemail,editname,editphone,editage,editgender;
     private TextInputLayout editemaillayout,editnamelayout,editphonelayout,editagelayout,editgenderlayout;

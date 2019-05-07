@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Academics Tutor"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your Class"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <RadioGroup
+            android:id="@+id/SchoolClassList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/Class1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:buttonTint="@android:color/black"
+                android:layoutDirection="rtl"
+                android:text="Class1"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/Class2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class2"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class3"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class3"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:buttonTint="@android:color/black"
+                android:layoutDirection="rtl"
+                android:text="Class4"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/Class5"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class5"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class6"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class6"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:buttonTint="@android:color/black"
+                android:layoutDirection="rtl"
+                android:text="Class7"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/Class8"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class8"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class9"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class9"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+            <RadioButton
+                android:id="@+id/Class10"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Class10"
+                android:layoutDirection="rtl"
+                android:textSize="16sp"
+                android:buttonTint="@android:color/black"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+
+        </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:layout_marginBottom="50dp"
+            >
+            <Button
+
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/NextBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/Button"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="50dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+
+
+</FrameLayout>

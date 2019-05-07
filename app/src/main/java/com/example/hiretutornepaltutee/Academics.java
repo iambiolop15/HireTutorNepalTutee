@@ -1,5 +1,6 @@
 package com.example.hiretutornepaltutee;
 
+
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,5 +19,6 @@ public class Academics extends AppCompatActivity {
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_container,new StudyLevel());
         fragmentTransaction.commit();
+
     }
 }

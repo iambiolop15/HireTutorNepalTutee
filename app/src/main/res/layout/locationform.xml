@@ -22,7 +22,7 @@
 
         </RelativeLayout>
         <fr.ganfra.materialspinner.MaterialSpinner
-            android:id="@+id/Hours"
+            android:id="@+id/City"
             android:layout_marginTop="48dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
@@ -32,45 +32,72 @@
             app:ms_baseColor="@android:color/black"
             app:ms_arrowSize="16dp"
             app:ms_floatingLabelColor="@android:color/black"
-            app:ms_floatingLabelText="How long should each session be?"
+            app:ms_floatingLabelText="Select Your City"
             app:ms_hintColor="@android:color/black"
-            app:ms_hint="How long should each session be?"
+            app:ms_hint="Select Your City"
             app:ms_multiline="true"
             app:ms_enableFloatingLabel="true"
             >
         </fr.ganfra.materialspinner.MaterialSpinner>
-
-        <fr.ganfra.materialspinner.MaterialSpinner
-            android:id="@+id/DaysaWeek"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/Arealay"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:ms_arrowColor="@android:color/black"
-            app:ms_baseColor="@android:color/black"
-            app:ms_arrowSize="16dp"
-            app:ms_floatingLabelColor="@android:color/black"
-            app:ms_floatingLabelText="How often do you need class?"
-            app:ms_hintColor="@android:color/black"
-            app:ms_hint="How often do you need class?"
-            app:ms_multiline="true"
-            app:ms_enableFloatingLabel="true">
-        </fr.ganfra.materialspinner.MaterialSpinner>
-
-            <EditText
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:id="@+id/PreferredTime"
+            android:textColorHint="@android:color/black"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/WelcomeErrorAppearance1"
+            android:backgroundTint="@android:color/black"
+            android:theme="@style/EditTextTheme"
+            >
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/Area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Choose your preferred time"
-                android:textColorHint="@android:color/black"
-                android:drawablePadding="10dp"
+                android:hint="Area *(like Ratopul)"
                 android:backgroundTint="@android:color/black"
+                android:drawablePadding="10dp"
+                android:maxLines="1"
+                android:inputType="text"
                 android:textColor="@android:color/black"
                 android:textColorHighlight="@android:color/black"
                 />
+
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/Descriptionlay"
+
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/black"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/WelcomeErrorAppearance1"
+            android:backgroundTint="@android:color/black"
+            android:theme="@style/EditTextTheme"
+            >
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description of your location"
+                android:backgroundTint="@android:color/black"
+                android:drawablePadding="10dp"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:textColorHighlight="@android:color/black"
+                />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
 
 
 
@@ -100,4 +127,6 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
+
 </FrameLayout>

@@ -12,34 +12,32 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class DanceFragment  extends Fragment {
-    RadioGroup danceCategory;
-    RadioButton hiphop,salsa,contemporary,classical;
+public class VocalsCategory extends Fragment {
+    RadioGroup vocalscategory;
+    RadioButton western,classical;
     Button nextBTn;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.dance_fragment,container,false);
-        danceCategory=view.findViewById(R.id.DanceFormList);
-        hiphop=view.findViewById(R.id.Hiphop);
-        salsa=view.findViewById(R.id.Salsa);
-        contemporary=view.findViewById(R.id.Contemporary);
+        final View view=inflater.inflate(R.layout.vocalscategory,container,false);
+        vocalscategory=view.findViewById(R.id.VocalscategoryList);
+        western=view.findViewById(R.id.Western);
         classical=view.findViewById(R.id.Classical);
         nextBTn=view.findViewById(R.id.NextBtn);
         nextBTn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioButton checkedBtn=view.findViewById(danceCategory.getCheckedRadioButtonId());
-                if (danceCategory.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(getActivity(), "Choose Your Category", Toast.LENGTH_SHORT).show();
-
+                RadioButton checkedBtn=view.findViewById(vocalscategory.getCheckedRadioButtonId());
+                if (vocalscategory.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getActivity(), "Choose Your Faculty", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else{
+                    String checkedValue=checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
-                    fr.replace(R.id.fragment_container, new ReasonToLearnDance()).addToBackStack("Fragment").commit();
+                    fr.replace(R.id.fragment_container, new Hobbyorpassion()).addToBackStack("Fragment").commit();
                 }
             }
         });
-        return  view;
+        return view;
     }
 }

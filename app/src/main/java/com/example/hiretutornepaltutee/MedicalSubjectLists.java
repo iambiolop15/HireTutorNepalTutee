@@ -12,34 +12,33 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class DanceFragment  extends Fragment {
-    RadioGroup danceCategory;
-    RadioButton hiphop,salsa,contemporary,classical;
+public class MedicalSubjectLists extends Fragment {
+    RadioGroup medicalsubjectList;
+    RadioButton medphy,medchem,medbio;
     Button nextBTn;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.dance_fragment,container,false);
-        danceCategory=view.findViewById(R.id.DanceFormList);
-        hiphop=view.findViewById(R.id.Hiphop);
-        salsa=view.findViewById(R.id.Salsa);
-        contemporary=view.findViewById(R.id.Contemporary);
-        classical=view.findViewById(R.id.Classical);
+        final View view=inflater.inflate(R.layout.medicalsubjectlist,container,false);
+        medicalsubjectList=view.findViewById(R.id.MedicalSubjectlist);
+        medphy=view.findViewById(R.id.MedPhy);
+        medbio=view.findViewById(R.id.MedBio);
+        medchem=view.findViewById(R.id.MedChem);
         nextBTn=view.findViewById(R.id.NextBtn);
         nextBTn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioButton checkedBtn=view.findViewById(danceCategory.getCheckedRadioButtonId());
-                if (danceCategory.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(getActivity(), "Choose Your Category", Toast.LENGTH_SHORT).show();
-
+                RadioButton checkedBtn=view.findViewById(medicalsubjectList.getCheckedRadioButtonId());
+                if (medicalsubjectList.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getActivity(), "Choose Your Subject", Toast.LENGTH_SHORT).show();
                 }
-                else {
+                else{
+                    String checkedValue=checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
-                    fr.replace(R.id.fragment_container, new ReasonToLearnDance()).addToBackStack("Fragment").commit();
+                    fr.replace(R.id.fragment_container, new TimeAndDaysForm()).addToBackStack("Fragment").commit();
                 }
             }
         });
-        return  view;
+        return view;
     }
 }

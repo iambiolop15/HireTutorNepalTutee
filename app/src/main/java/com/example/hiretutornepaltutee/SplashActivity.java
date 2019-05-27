@@ -31,15 +31,11 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     finish();
                     startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-
-
                 }
             }
             catch (Exception e){
                 Log.i("List",e.getMessage());
+
             }
-
-
-
     }
 }

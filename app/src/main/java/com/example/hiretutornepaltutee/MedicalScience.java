@@ -12,34 +12,36 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class DanceFragment  extends Fragment {
-    RadioGroup danceCategory;
-    RadioButton hiphop,salsa,contemporary,classical;
+public class MedicalScience extends Fragment {
+    RadioGroup medicalExamList;
+    RadioButton iom,moe;
     Button nextBTn;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.dance_fragment,container,false);
-        danceCategory=view.findViewById(R.id.DanceFormList);
-        hiphop=view.findViewById(R.id.Hiphop);
-        salsa=view.findViewById(R.id.Salsa);
-        contemporary=view.findViewById(R.id.Contemporary);
-        classical=view.findViewById(R.id.Classical);
+        final View view=inflater.inflate(R.layout.medicalexamlist,container,false);
+        medicalExamList=view.findViewById(R.id.MedicalExamlist);
+        iom=view.findViewById(R.id.IOM);
+        moe=view.findViewById(R.id.MOE);
         nextBTn=view.findViewById(R.id.NextBtn);
         nextBTn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioButton checkedBtn=view.findViewById(danceCategory.getCheckedRadioButtonId());
-                if (danceCategory.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(getActivity(), "Choose Your Category", Toast.LENGTH_SHORT).show();
+                RadioButton checkedBtn=view.findViewById(medicalExamList.getCheckedRadioButtonId());
+                if (medicalExamList.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(getActivity(), "Choose Your Subject", Toast.LENGTH_SHORT).show();
 
                 }
-                else {
+
+
+                else{
+                    String checkedValue=checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
-                    fr.replace(R.id.fragment_container, new ReasonToLearnDance()).addToBackStack("Fragment").commit();
+                    fr.replace(R.id.fragment_container, new MedicalSubjectLists()).addToBackStack("Fragment").commit();
                 }
             }
         });
         return  view;
+
     }
 }

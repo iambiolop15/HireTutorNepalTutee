@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,7 @@ public class PreForm  extends Fragment {
     RadioGroup gender;
     RadioButton pMale,pFemale,noPref;
     Button nextBtn;
+    SharedPreferences sharedPreferences;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class PreForm  extends Fragment {
             @Override
             public void onClick(View v) {
                 RadioButton checkedBtn=view.findViewById(gender.getCheckedRadioButtonId());
+
                 if(gender.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(getActivity(), "Choose Your Preference", Toast.LENGTH_SHORT).show();
                 }
@@ -38,7 +42,11 @@ public class PreForm  extends Fragment {
                     String checkedValue=checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new LocationForm()).addToBackStack("Fragment").commit();
-
+                    String prefTeacher=checkedBtn.getText().toString();
+                    SharedPreferences pref =getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("PrefTeacher",prefTeacher);
+                    edt.commit();
 
 
                 }

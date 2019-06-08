@@ -88,7 +88,7 @@ public class           EditProfile extends AppCompatActivity {
         firebaseDatabase=FirebaseDatabase.getInstance();
         firebaseStorage=FirebaseStorage.getInstance();
 
-        final DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
+        final DatabaseReference databaseReference=firebaseDatabase.getReference().child("Tutee").child(firebaseAuth.getUid());
         storageReference=firebaseStorage.getReference();
 
 

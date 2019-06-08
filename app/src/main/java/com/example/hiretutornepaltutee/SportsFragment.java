@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,8 +19,6 @@ public class SportsFragment extends Fragment {
     RadioGroup sportsCategory;
     RadioButton cricket,football,tabletennis,badminton;
     Button nextBTn;
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,13 +37,15 @@ public class SportsFragment extends Fragment {
                     Toast.makeText(getActivity(), "Choose Your Category", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    String selectedSports=checkedBtn.getText().toString();
-                    Bundle bundle=new Bundle();
-                    bundle.putString("SelectedSports",selectedSports);
-                    new EquipmentAvailibility().setArguments(bundle);
+
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new EquipmentAvailibility()).addToBackStack("Fragment").commit();
                 }
+                String selectedSports=checkedBtn.getText().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("selectedSports",selectedSports);
+                edt.commit();
             }
         });
         return  view;

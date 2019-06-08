@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,7 @@ public class AcademicsFaculty extends Fragment {
     RadioGroup facultylist;
     RadioButton bba,bbs,it;
     Button nextBtn;
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -30,6 +33,7 @@ public class AcademicsFaculty extends Fragment {
             @Override
             public void onClick(View v) {
                 RadioButton checkedBtn=view.findViewById(facultylist.getCheckedRadioButtonId());
+                String selectedfaculty=checkedBtn.getText().toString();
                 if (facultylist.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(getActivity(), "Choose Your Faculty", Toast.LENGTH_SHORT).show();
 
@@ -37,7 +41,6 @@ public class AcademicsFaculty extends Fragment {
 
 
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
                     if(facultylist.getCheckedRadioButtonId()==R.id.BBA) {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new BBASubjects()).addToBackStack("Fragment").commit();
@@ -50,6 +53,10 @@ public class AcademicsFaculty extends Fragment {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new ITsubjects()).addToBackStack("Fragment").commit();
                     }
+                    SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("SelectedClass",selectedfaculty);
+                    edt.commit();
 
 
                     }

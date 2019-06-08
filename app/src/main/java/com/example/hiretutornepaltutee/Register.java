@@ -17,10 +17,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -53,6 +55,8 @@ public class Register extends AppCompatActivity {
     private FirebaseStorage firebaseStorage;
     private static  int PICK_IMAGE=123;
     Uri imagepath;
+    CheckBox checkBox;
+    TextView termsandconditions;
     private  StorageReference storageReference;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -89,6 +93,8 @@ public class Register extends AppCompatActivity {
         passlayout = findViewById(R.id.Passlayout);
         profilePic=(ImageView) findViewById(R.id.profilepic);
         cPasslayout = findViewById(R.id.CPasslayout);
+        termsandconditions=findViewById(R.id.termsandconditions);
+        checkBox=findViewById(R.id.checkbox);
         List<String> categories = new ArrayList<>();
         categories.add(0, "Gender");
         categories.add("Male");
@@ -119,9 +125,14 @@ public class Register extends AppCompatActivity {
         regbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(checkBox.isChecked()){
 
                 if (ConfirmInput(v)) {
                     registerUser();
+                }}
+                else{
+                    Toast.makeText(Register.this, "U must agree to all the terms and conditions", Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -147,6 +158,13 @@ public class Register extends AppCompatActivity {
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent,"Select Image"),PICK_IMAGE);
                 
+            }
+        });
+        termsandconditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),TermsAndconditions.class);
+                startActivity(intent);
             }
         });
 
@@ -318,7 +336,7 @@ public class Register extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
             }
         });
-        DatabaseReference myRef=firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference myRef=firebaseDatabase.getReference().child("Tutee").child(firebaseAuth.getUid());
         UserProfile userProfile=new UserProfile(name,email,age,phone,gender);
         myRef.setValue(userProfile);
     }

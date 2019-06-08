@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -44,9 +46,13 @@ public class SchoolClass extends Fragment {
 
 
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
+                    String selectedfaculty=checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container,new SchoolSubjects()).addToBackStack("Fragment").commit();
+                    SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("SelectedClass",selectedfaculty);
+                    edt.commit();
 
                 }
 

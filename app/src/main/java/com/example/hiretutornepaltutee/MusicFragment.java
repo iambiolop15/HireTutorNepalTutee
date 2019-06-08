@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -36,7 +38,7 @@ public class MusicFragment extends Fragment {
 
 
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
+                    String selectedMusiccategory=checkedBtn.getText().toString();
                     if(musicCategory.getCheckedRadioButtonId()==R.id.Guitar) {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new InstrumentAvailability()).addToBackStack("Fragment").commit();
@@ -49,6 +51,10 @@ public class MusicFragment extends Fragment {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new InstrumentAvailability()).addToBackStack("Fragment").commit();
                     }
+                    SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("selectedMusiccategory",selectedMusiccategory);
+                    edt.commit();
                 }
             }
         });

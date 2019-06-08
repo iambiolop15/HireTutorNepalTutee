@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,10 +37,15 @@ public class ManagementExamList extends Fragment {
 
 
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
+
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new ManagementSubjectLists()).addToBackStack("Fragment").commit();
                 }
+                String selectedMgmtExam=checkedBtn.getText().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("SelectedExam",selectedMgmtExam);
+                edt.commit();
             }
         });
         return view;

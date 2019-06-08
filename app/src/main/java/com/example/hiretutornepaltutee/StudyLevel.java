@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ public class StudyLevel extends Fragment {
     private RadioGroup academicList;
     private RadioButton aSchool,aPlusTwo,aBachelor;
     private Button nextBtn;
+    SharedPreferences sharedPreferences;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,8 +34,8 @@ public class StudyLevel extends Fragment {
            @Override
            public void onClick(View v) {
                RadioButton checkedBtn=view.findViewById(academicList.getCheckedRadioButtonId());
-                                 if (academicList.getCheckedRadioButtonId() == -1) {
-                       Toast.makeText(getActivity(), "Choose Your School Level", Toast.LENGTH_SHORT).show();
+               if (academicList.getCheckedRadioButtonId() == -1) {
+                   Toast.makeText(getActivity(), "Choose Your School Level", Toast.LENGTH_SHORT).show();
 
                    }
 
@@ -56,6 +59,11 @@ public class StudyLevel extends Fragment {
                                          fr.replace(R.id.fragment_container,new SchoolClass()).addToBackStack("Fragment").commit();
 
                                      }
+                   String selectedLevel=checkedBtn.getText().toString();
+                   SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                   SharedPreferences.Editor edt = pref.edit();
+                   edt.putString("SelectedLevel",selectedLevel);
+                   edt.commit();
 
 
 

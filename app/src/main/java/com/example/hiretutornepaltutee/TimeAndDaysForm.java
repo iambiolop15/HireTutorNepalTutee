@@ -1,6 +1,8 @@
 package com.example.hiretutornepaltutee;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -75,6 +77,15 @@ public class TimeAndDaysForm extends Fragment {
         nxtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String prefTime=preferTime.getText().toString();
+                String classDuration=hourSpinner.getSelectedItem().toString();
+                String daysAweek=daysSPinner.getSelectedItem().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("SelectedPrefTime",prefTime);
+                edt.putString("SelectedClassDuration",classDuration);
+                edt.putString("SelectedDayAweek",daysAweek);
+                edt.commit();
                 FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container,new PreForm()).addToBackStack("Fragment").commit();
 

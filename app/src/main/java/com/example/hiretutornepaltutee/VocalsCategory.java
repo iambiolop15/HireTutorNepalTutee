@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,10 +34,15 @@ public class VocalsCategory extends Fragment {
                     Toast.makeText(getActivity(), "Choose Your Faculty", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
+
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new Hobbyorpassion()).addToBackStack("Fragment").commit();
                 }
+                String vocalsCatg=checkedBtn.getText().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("InstrumentAvail",vocalsCatg);
+                edt.commit();
             }
         });
         return view;

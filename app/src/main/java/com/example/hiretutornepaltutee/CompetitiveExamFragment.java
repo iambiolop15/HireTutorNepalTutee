@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -36,7 +38,7 @@ public class CompetitiveExamFragment extends Fragment {
 
 
                 else{
-                    String checkedValue=checkedBtn.getText().toString();
+
                     if(competitiveExamFaculty.getCheckedRadioButtonId()==R.id.Engineering) {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new EngineeringExamList()).addToBackStack("Fragment").commit();
@@ -49,6 +51,11 @@ public class CompetitiveExamFragment extends Fragment {
                         FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new ManagementExamList()).addToBackStack("Fragment").commit();
                     }
+                    String selectedcompetitiveExam=checkedBtn.getText().toString();
+                    SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("SelectedCompetitiveExam",selectedcompetitiveExam);
+                    edt.commit();
 
 
                 }

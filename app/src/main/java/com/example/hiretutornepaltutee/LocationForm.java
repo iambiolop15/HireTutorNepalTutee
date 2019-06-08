@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -36,6 +38,15 @@ public class LocationForm extends Fragment {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String selectedCity=citySpinner.getSelectedItem().toString();
+                String selectedArea=areaLayout.getEditText().getText().toString().trim();
+                String description=descriptionLayout.getEditText().getText().toString().trim();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("SelectedCity",selectedCity);
+                edt.putString("SelectedArea",selectedArea);
+                edt.putString("Description",description);
+                edt.commit();
                 FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                 fr.replace(R.id.fragment_container, new ScheduleDemoClass()).addToBackStack("Fragment").commit();
 

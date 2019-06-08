@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,7 @@ public class BBSsubjects extends Fragment {
     RadioGroup bbsSubjectList;
     RadioButton microEco,macroEco,businessStat,pom,businessLaw;
     Button nextBTn;
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -32,14 +35,18 @@ public class BBSsubjects extends Fragment {
             @Override
             public void onClick(View v) {
                 RadioButton checkedBtn = view.findViewById(bbsSubjectList.getCheckedRadioButtonId());
+
                 if (bbsSubjectList.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(getActivity(), "Choose Your Subject", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    String checkedValue = checkedBtn.getText().toString();
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new TimeAndDaysForm()).addToBackStack("Fragment").commit();
-
+                    String selectedSubject=checkedBtn.getText().toString();
+                    SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putString("SelectedSubject",selectedSubject);
+                    edt.commit();
                 }
             }
         });

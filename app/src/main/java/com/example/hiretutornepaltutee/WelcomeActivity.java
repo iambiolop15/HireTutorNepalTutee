@@ -31,7 +31,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         btnSkip=(Button)findViewById(R.id.btnskip);
         btnNext.setOnClickListener(this);
         btnSkip.setOnClickListener(this);
-
         createDots(0);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -61,7 +60,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private void createDots(int current_position){
         if(dots_layout!=null)
             dots_layout.removeAllViews();
-        dots=new ImageView[layouts.length];
+            dots=new ImageView[layouts.length];
         for (int i=0;i<layouts.length;i++){
             dots[i]=new ImageView(this);
             if(i==current_position){

@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,6 +40,11 @@ public class DanceFragment  extends Fragment {
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new ReasonToLearnDance()).addToBackStack("Fragment").commit();
                 }
+                String selectedDancecategory=checkedBtn.getText().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("selectedDancecategory",selectedDancecategory);
+                edt.commit();
             }
         });
         return  view;

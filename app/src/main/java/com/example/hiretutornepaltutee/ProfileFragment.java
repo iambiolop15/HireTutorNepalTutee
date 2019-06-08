@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         userprofilePic=view.findViewById(R.id.UserprofilePic);
         userId=view.findViewById(R.id.Username);
         firebaseStorage= FirebaseStorage.getInstance();
-        DatabaseReference databaseReference=firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference databaseReference=firebaseDatabase.getReference().child("Tutee").child(firebaseAuth.getUid());
         StorageReference storageReference=firebaseStorage.getReference();
 
 
@@ -79,10 +79,7 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserProfile userProfile=dataSnapshot.getValue(UserProfile.class);
                 userId.setText(userProfile.getUname());
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(getActivity(), databaseError.getCode(), Toast.LENGTH_SHORT).show();
@@ -123,6 +120,19 @@ public class ProfileFragment extends Fragment {
                 startActivity(new Intent(getActivity(),Privacy.class));
             }
         });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),AboutUs.class));
+            }
+        });
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),FAQ.class));
+            }
+        });
+
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

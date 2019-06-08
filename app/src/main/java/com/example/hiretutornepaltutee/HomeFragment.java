@@ -3,12 +3,14 @@ package com.example.hiretutornepaltutee;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +61,11 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                SharedPreferences preff = getActivity().getSharedPreferences("course",Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = preff.edit();
+                edt.putInt("CourseId",position);
+                Log.i("Position",""+position);
+                edt.commit();
                 if(position==0){
                     startActivity(new Intent(getActivity(),Academics.class));
 
@@ -67,9 +73,11 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 if(position==1){
                     startActivity(new Intent(getActivity(),CompetitiveExam.class));
 
+
                 }
                 if(position==2){
                     startActivity(new Intent(getActivity(),Music.class));
+
 
                 }
                 if(position==3){
@@ -78,8 +86,8 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
                 }
                 if(position==4){
                     startActivity(new Intent(getActivity(),Sports.class));
-
                 }
+
 
             }
         });

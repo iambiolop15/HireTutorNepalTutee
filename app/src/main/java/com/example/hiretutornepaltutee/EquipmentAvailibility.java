@@ -1,5 +1,7 @@
 package com.example.hiretutornepaltutee;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -35,12 +37,14 @@ public class EquipmentAvailibility extends Fragment {
                 }
                 else{
                     String checkedValue=checkedBtn.getText().toString();
-                    Bundle bundle=getArguments();
-                    String selectedSports=bundle.getString("SelectedSports");
-                    Log.i("Bhai",""+selectedSports);
                     FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
                     fr.replace(R.id.fragment_container, new SportsSpaceAvailibilty()).addToBackStack("Fragment").commit();
                 }
+                String equipmentAvail=checkedBtn.getText().toString();
+                SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putString("EquipmentAvail",equipmentAvail);
+                edt.commit();
             }
         });
 

@@ -70,7 +70,7 @@ public class MusicReviewPage extends Fragment {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
                 String key=database.getReference().child(firebaseAuth.getUid()).push().getKey();
-                DatabaseReference databaseReference=database.getReference().child("Courses").child("MusicCours").child(firebaseAuth.getUid()).child(key);
+                DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("MusicCours").child(firebaseAuth.getUid()).child(key);
                 MusicCourses courses=new MusicCourses(pwhatToLearn,pvocalCatOrInstAvail,preasonToLearn,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
             }

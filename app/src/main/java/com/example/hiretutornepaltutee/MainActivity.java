@@ -24,6 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth= FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         //if(firebaseUser!=null){
-            //finish();
-            //startActivity(new Intent(getApplicationContext(),Home.class));
+        //finish();
+        //startActivity(new Intent(getApplicationContext(),Home.class));
         //}
         setContentView(R.layout.activity_main);
         regbutton=findViewById(R.id.registerbtn);
@@ -64,17 +69,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-         try{
-        regbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),Register.class);
-                startActivity(intent);
-                finish();
-            }
-        });}
+        try{
+            regbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getApplicationContext(),Register.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });}
         catch(Exception ex){
-             Log.i("Error",ex.getMessage());
+            Log.i("Error",ex.getMessage());
 
         }
         forgotPass.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +99,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    progressDialog.dismiss();
-                    checkEmailverification();
+                    String userId=firebaseAuth.getUid();
+                    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                    DatabaseReference myref=firebaseDatabase.getReference();
+                    myref.child("Tutee").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()){
+                                progressDialog.dismiss();
+                                checkEmailverification();
+                            }
+                            else {
+                                firebaseAuth.signOut();
+                                progressDialog.dismiss();
+                                Toast.makeText(MainActivity.this, "User is registered as Tutor", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
                 }
                 else{
                     progressDialog.dismiss();

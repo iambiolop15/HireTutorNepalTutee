@@ -63,7 +63,7 @@ public class CompetitiveReviewPage extends Fragment {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
                 String key=database.getReference().child(firebaseAuth.getUid()).push().getKey();
-                DatabaseReference databaseReference=database.getReference().child("Courses").child("CompetitiveCours").child(firebaseAuth.getUid()).child(key);
+                DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("CompetitiveCours").child(firebaseAuth.getUid()).child(key);
                 CompetitiveCourses courses=new CompetitiveCourses(pcompetitiveExamField,pwhichCompetitiveExam,psubjects,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
             }

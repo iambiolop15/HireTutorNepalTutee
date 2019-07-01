@@ -130,6 +130,7 @@ public class           EditProfile extends AppCompatActivity {
                     UserProfile userProfile = new UserProfile(name,email,age,phone,gender);
                     databaseReference.setValue(userProfile);
                     StorageReference imageReference=storageReference.child(firebaseAuth.getUid()).child("Images").child("ProfilePic");
+                    if(imagepath!=null){
                     UploadTask uploadTask=imageReference.putFile(imagepath);
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -141,7 +142,8 @@ public class           EditProfile extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         }
-                    });
+                    });}
+
                     finish();
                 }
             });

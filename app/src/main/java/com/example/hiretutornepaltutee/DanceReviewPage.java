@@ -64,7 +64,7 @@ public class DanceReviewPage extends Fragment {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
                 String key=database.getReference().child(firebaseAuth.getUid()).push().getKey();
-                DatabaseReference databaseReference=database.getReference().child("Courses").child("DanceCours").child(firebaseAuth.getUid()).child(key);
+                DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("DanceCours").child(firebaseAuth.getUid()).child(key);
                 DanceCourses courses=new DanceCourses(pwhatToLearn,pspaceAvail,preasonToLearn,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
             }

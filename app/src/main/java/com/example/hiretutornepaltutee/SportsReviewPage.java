@@ -63,7 +63,7 @@ public class SportsReviewPage extends Fragment {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
                 String key=database.getReference().child(firebaseAuth.getUid()).push().getKey();
-                DatabaseReference databaseReference=database.getReference().child("Courses").child("SportsCours").child(firebaseAuth.getUid()).child(key);
+                DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("SportsCours").child(firebaseAuth.getUid()).child(key);
                 SportsCourses courses=new SportsCourses(pwhichSport,pspaceAvail,pequipmentAvail,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
             }

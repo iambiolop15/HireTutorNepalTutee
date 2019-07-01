@@ -66,7 +66,7 @@ public class AcademicsReviewPage extends Fragment {
                 FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                 FirebaseDatabase database=FirebaseDatabase.getInstance();
                 String key=database.getReference().child(firebaseAuth.getUid()).push().getKey();
-                DatabaseReference databaseReference=database.getReference().child("Courses").child("AcademicCours").child(firebaseAuth.getUid()).child(key);
+                DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("AcademicCours").child(firebaseAuth.getUid()).child(key);
                 AcademicCourses courses=new AcademicCourses(pselectedstudylevel,pselectedclass,psubjects,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
 

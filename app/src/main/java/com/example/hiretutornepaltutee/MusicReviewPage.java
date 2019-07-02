@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,8 @@ public class MusicReviewPage extends Fragment {
                 DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("MusicCours").child(firebaseAuth.getUid()).child(key);
                 MusicCourses courses=new MusicCourses(pwhatToLearn,pvocalCatOrInstAvail,preasonToLearn,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
+                FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_container, new ThankYou()).addToBackStack("Fragment").commit();
             }
         });
         return view;

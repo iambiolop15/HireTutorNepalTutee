@@ -34,6 +34,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -51,7 +52,7 @@ public class Register extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private ImageView profilePic;
-    String name,email,phone,age,gender,cPass,pass;
+    String name,email,phone,age,gender,cPass,pass,imageurl;
     private FirebaseStorage firebaseStorage;
     private static  int PICK_IMAGE=123;
     Uri imagepath;
@@ -334,10 +335,17 @@ public class Register extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                       imageurl=uri.toString();
+                        // This is the complete uri, you can store it to realtime database
+                    }
+                });
             }
         });
         DatabaseReference myRef=firebaseDatabase.getReference().child("Tutee").child(firebaseAuth.getUid());
-        UserProfile userProfile=new UserProfile(name,email,age,phone,gender);
+        UserProfile userProfile=new UserProfile(name,email,age,phone,gender,imageurl);
         myRef.setValue(userProfile);
     }
 }

@@ -31,6 +31,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class ProfileFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
@@ -38,7 +40,7 @@ public class ProfileFragment extends Fragment {
     Fragment fragment=null;
     private FirebaseDatabase firebaseDatabase;
     private TextView userId;
-    private ImageView userprofilePic;
+    private CircleImageView userprofilePic;
     private FirebaseStorage firebaseStorage;
 
 

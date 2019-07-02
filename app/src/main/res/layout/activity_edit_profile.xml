@@ -16,13 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/onboarding_bg">
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePic"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                android:src="@drawable/photo" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_user"
+                />
         </RelativeLayout>
         <android.support.design.widget.TextInputLayout
         android:id="@+id/Namelayout"

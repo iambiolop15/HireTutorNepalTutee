@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,8 @@ public class CompetitiveReviewPage extends Fragment {
                 DatabaseReference databaseReference=database.getReference().child("Tutee Courses").child("CompetitiveCours").child(firebaseAuth.getUid()).child(key);
                 CompetitiveCourses courses=new CompetitiveCourses(pcompetitiveExamField,pwhichCompetitiveExam,psubjects,pdurationofclass,pdaysAweek,pprefTime,pprefTeacher,pcity,parea,pscheduleddeoclass);
                 databaseReference.setValue(courses);
+                FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_container, new ThankYou()).addToBackStack("Fragment").commit();
             }
         });
         return view;

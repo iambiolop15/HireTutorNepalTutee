@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CoursesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".Home">
+    <FrameLayout
+        android:layout_below="@+id/CoursesTab"
+        android:id="@+id/CoursesFramelayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Courses" />
+        android:layout_height="wrap_content"
+        ></FrameLayout>
 
-</FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/CoursesTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/courses_menu"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        android:background="@drawable/btm_navbg">
+    </android.support.design.widget.BottomNavigationView>
+</RelativeLayout>

@@ -23,15 +23,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ChatFragment extends Fragment {
@@ -81,7 +86,7 @@ public class ChatFragment extends Fragment {
         chatDtoList.clear();
         String senderId = mAuth.getCurrentUser().getUid();
         final String id = setOneToOneChat(receiverId, senderId);
-        collectionReferenceforChat.document(id).collection(senderId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        collectionReferenceforChat.document(id).collection(senderId).orderBy("timestamp", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -131,7 +136,7 @@ public class ChatFragment extends Fragment {
 
     private void saveMessageInFirebase(final String message, final String receiverId) {
         final String senderId = mAuth.getCurrentUser().getUid();
-        Object timestamp = ServerValue.TIMESTAMP;
+        Object timestamp=FieldValue.serverTimestamp();
         String id = setOneToOneChat(receiverId, senderId);
         final ChatDto chatDto = new ChatDto(message, receiverId, senderId, timestamp);
         chatDtoList.clear();

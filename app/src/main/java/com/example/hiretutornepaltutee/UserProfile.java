@@ -5,18 +5,19 @@ public class UserProfile {
     public String uemail;
     public String uage;
     public String uphone;
-
+    public String uimageurl;
     public String ugender;
 
     public  UserProfile() {
 
     }
 
-    public UserProfile(String username, String email, String age, String phone, String gender) {
+    public UserProfile(String username, String email, String age, String phone, String gender, String imageurl) {
         this.uname = username;
         this.uemail = email;
         this.uage = age;
         this.uphone = phone;
+        this.uimageurl=imageurl;
         ugender = gender;
     }
 
@@ -58,5 +59,13 @@ public class UserProfile {
 
     public void setUgender(String ugender) {
         this.ugender = ugender;
+    }
+
+    public String getUimageurl() {
+        return uimageurl;
+    }
+
+    public void setUimageurl(String uimageurl) {
+        this.uimageurl = uimageurl;
     }
 }

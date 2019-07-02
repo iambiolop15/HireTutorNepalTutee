@@ -34,6 +34,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class           EditProfile extends AppCompatActivity {
 
     private AppCompatEditText editemail,editname,editphone,editage,editgender;
@@ -42,7 +44,7 @@ public class           EditProfile extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     Fragment fragment=null;
-    private ImageView pPic;
+    private CircleImageView pPic;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     Uri imagepath;
@@ -127,7 +129,8 @@ public class           EditProfile extends AppCompatActivity {
                     String email = editemaillayout.getEditText().getText().toString().trim();
                     String gender = editgenderlayout.getEditText().getText().toString().trim();
                     String phone = editphonelayout.getEditText().getText().toString().trim();
-                    UserProfile userProfile = new UserProfile(name,email,age,phone,gender);
+                    String imageurl=editagelayout.getEditText().getText().toString().trim();
+                    UserProfile userProfile = new UserProfile(name,email,age,phone,gender,imageurl);
                     databaseReference.setValue(userProfile);
                     StorageReference imageReference=storageReference.child(firebaseAuth.getUid()).child("Images").child("ProfilePic");
                     if(imagepath!=null){

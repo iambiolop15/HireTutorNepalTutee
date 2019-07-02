@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Completed"
+        android:title="Completed"
+        android:icon="@drawable/completed"
+        ></item>
+    <item android:id="@+id/Running"
+        android:title="Running"
+        android:icon="@drawable/running"
+        ></item>
+
+
+</menu>

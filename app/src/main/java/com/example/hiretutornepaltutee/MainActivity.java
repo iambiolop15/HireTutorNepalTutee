@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -106,10 +107,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    firebaseAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
-                        @Override
-                        public void onSuccess(GetTokenResult getTokenResult) {
-                            String token_id=getTokenResult.getToken();
+
+                            String token_id= FirebaseInstanceId.getInstance().getId();
                             String current_id=firebaseAuth.getCurrentUser().getUid();
                             Map<String,Object> tokenMap=new HashMap<>();
                             tokenMap.put("token_id",token_id);
@@ -143,8 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                             });
-                        }
-                    });
+
 
 
                 }

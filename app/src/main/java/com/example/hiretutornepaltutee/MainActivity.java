@@ -20,18 +20,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private Button regbutton,loginbtn;
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputLayout email_layout,pass_layout;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog  progressDialog;
+    private FirebaseFirestore firebaseFirestore;
 
 
 
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         firebaseAuth= FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         //if(firebaseUser!=null){
         //finish();
@@ -99,29 +106,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    String userId=firebaseAuth.getUid();
-                    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-                    DatabaseReference myref=firebaseDatabase.getReference();
-                    myref.child("Tutee").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    firebaseAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.exists()){
-                                progressDialog.dismiss();
-                                checkEmailverification();
-                            }
-                            else {
-                                firebaseAuth.signOut();
-                                progressDialog.dismiss();
-                                Toast.makeText(MainActivity.this, "User is registered as Tutor", Toast.LENGTH_SHORT).show();
-                            }
+                        public void onSuccess(GetTokenResult getTokenResult) {
+                            String token_id=getTokenResult.getToken();
+                            String current_id=firebaseAuth.getCurrentUser().getUid();
+                            Map<String,Object> tokenMap=new HashMap<>();
+                            tokenMap.put("token_id",token_id);
+                            firebaseFirestore.collection("Users").document(current_id).set(tokenMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    String userId=firebaseAuth.getUid();
+                                    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                                    DatabaseReference myref=firebaseDatabase.getReference();
+                                    myref.child("Tutee").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if(dataSnapshot.exists()){
+                                                progressDialog.dismiss();
+                                                checkEmailverification();
+                                            }
+                                            else {
+                                                firebaseAuth.signOut();
+                                                progressDialog.dismiss();
+                                                Toast.makeText(MainActivity.this, "User is registered as Tutor", Toast.LENGTH_SHORT).show();
+                                            }
 
-                        }
+                                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                                        }
+                                    });
+
+
+                                }
+                            });
                         }
                     });
+
 
                 }
                 else{

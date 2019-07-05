@@ -1,22 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RunningCourseView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/nolist"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:text="Theres no any course running...!!!"
+            android:textColor="@android:color/black" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagebook"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:textSize="18sp"
-            android:text="Theres is no any running course"/>
+            android:layout_marginTop="40dp"
+            android:src="@drawable/notebook"
+            app:civ_border_color="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/bookcourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="To book your course go to home"
+            android:textColor="@android:color/black" />
+
+
+        <Button
+            android:id="@+id/gotohome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/onboarding_bg"
+            android:gravity="center"
+            android:text="Go to Home"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
     </LinearLayout>
 </FrameLayout>

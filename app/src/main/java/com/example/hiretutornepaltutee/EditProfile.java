@@ -45,8 +45,11 @@ public class           EditProfile extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     Fragment fragment=null;
     private CircleImageView pPic;
+    String imageurl;
+    String name,email,gender,phone,age;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
+    StorageReference imageReference;
     Uri imagepath;
     private static  int PICK_IMAGE=123;
 
@@ -124,15 +127,11 @@ public class           EditProfile extends AppCompatActivity {
             updateBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String name = editnamelayout.getEditText().getText().toString().trim();
-                    String age = editagelayout.getEditText().getText().toString().trim();
-                    String email = editemaillayout.getEditText().getText().toString().trim();
-                    String gender = editgenderlayout.getEditText().getText().toString().trim();
-                    String phone = editphonelayout.getEditText().getText().toString().trim();
-                    String imageurl=editagelayout.getEditText().getText().toString().trim();
-                    UserProfile userProfile = new UserProfile(name,email,age,phone,gender,imageurl);
-                    databaseReference.setValue(userProfile);
-                    StorageReference imageReference=storageReference.child(firebaseAuth.getUid()).child("Images").child("ProfilePic");
+                    name = editnamelayout.getEditText().getText().toString().trim();age = editagelayout.getEditText().getText().toString().trim();
+                    email = editemaillayout.getEditText().getText().toString().trim();
+                    gender = editgenderlayout.getEditText().getText().toString().trim();
+                    phone = editphonelayout.getEditText().getText().toString().trim();
+                     imageReference=storageReference.child(firebaseAuth.getUid()).child("Images").child("ProfilePic");
                     if(imagepath!=null){
                     UploadTask uploadTask=imageReference.putFile(imagepath);
                     uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -143,6 +142,15 @@ public class           EditProfile extends AppCompatActivity {
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    imageurl = uri.toString();
+                                    Log.i("image", "" + imageurl);
+                                    UserProfile userProfile = new UserProfile(name,email,age,phone,gender,imageurl);
+                                    databaseReference.setValue(userProfile);
+                                }
+                            });
 
                         }
                     });}

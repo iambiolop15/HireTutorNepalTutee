@@ -160,8 +160,10 @@ public class ChatFragment extends Fragment {
         int compare = uid1.compareTo(uid2);
         if (compare < 0) {
             return uid1 + uid2;
-        } else {
+        }
+        else {
             return uid2 + uid1;
         }
+
     }
 }

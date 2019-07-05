@@ -27,9 +27,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,6 +47,8 @@ public class ProfileFragment extends Fragment {
     private TextView userId;
     private CircleImageView userprofilePic;
     private FirebaseStorage firebaseStorage;
+    FirebaseFirestore firebaseFirestore;
+    String muserId;
 
 
 
@@ -51,7 +58,9 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_profile,null);
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+        muserId=firebaseAuth.getCurrentUser().getUid();
         editProfile=view.findViewById(R.id.editprofileLayout);
         myCourses=view.findViewById(R.id.CoursesLayout);
         faq=view.findViewById(R.id.FAQLayout);
@@ -96,9 +105,20 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                getActivity().finish();
-                startActivity(new Intent(getActivity(),MainActivity.class));
+                Map<String,Object> tokenMapRemove=new HashMap<>();
+                tokenMapRemove.put("token_id", FieldValue.delete());
+                firebaseFirestore.collection("Users").document(muserId).update(tokenMapRemove).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        firebaseAuth.signOut();
+                        getActivity().finish();
+                        startActivity(new Intent(getActivity(),MainActivity.class));
+
+
+                    }
+                });
+
+
 
             }
         });

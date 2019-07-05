@@ -25,12 +25,23 @@
         <activity
             android:name=".Music"
             android:theme="@style/NoActionbar" />
+
+
+        <service
+            android:name=".FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <activity
             android:name=".Sports"
             android:theme="@style/NoActionbar" />
         <activity
             android:name=".CompetitiveExam"
             android:theme="@style/NoActionbar" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
         <activity
             android:name=".Academics"
             android:theme="@style/NoActionbar" />
@@ -45,7 +56,9 @@
             android:theme="@style/OnboardingTheme" />
         <activity
             android:name=".Home"
-            android:theme="@style/NoActionbar" />
+            android:theme="@style/NoActionbar">
+
+        </activity>
         <activity
             android:name=".Register"
             android:theme="@style/OnboardingTheme" />

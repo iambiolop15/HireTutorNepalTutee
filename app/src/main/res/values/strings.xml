@@ -31,6 +31,7 @@
     <string name="Female">"Female"</string>
     <string name="Name">"Name"</string>
     <string name="logout">"Logout"</string>
+    <string name="default_notification_channel_id">myNotification</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
